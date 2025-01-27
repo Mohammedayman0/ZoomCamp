@@ -1,15 +1,16 @@
 docker run -it --entrypoint bash python:3.12.8
 pip --version
 
-
-winpty docker run -it \
+##Run Docker
+'''winpty docker run -it \
   -e POSTGRES_USER="root" \
   -e POSTGRES_PASSWORD="root" \
   -e POSTGRES_DB="ny_taxi" \
   -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
   -p 5432:5432 \
-  postgres:13
+  postgres:13'''
 
+##use PSQL
 
 SELECT
     COUNT(CASE WHEN trip_distance <= 1 THEN 1 END) AS up_to_1_mile,
