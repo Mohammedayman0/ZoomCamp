@@ -14,6 +14,7 @@ pip --version
 
 
 SELECT
+
     COUNT(CASE WHEN trip_distance <= 1 THEN 1 END) AS up_to_1_mile,
     
     COUNT(CASE WHEN trip_distance > 1 AND trip_distance <= 3 THEN 1 END) AS between_1_and_3_miles,
@@ -28,12 +29,20 @@ WHERE lpep_pickup_datetime >= '2019-10-01' AND lpep_pickup_datetime < '2019-11-0
 
 
 SELECT
+
     DATE(lpep_pickup_datetime) AS pickup_day,
+    
     MAX(trip_distance) AS longest_trip
+    
 FROM green_trips
+
 GROUP BY pickup_day
+
 ORDER BY longest_trip DESC
+
 LIMIT 1;
+
+
 
 SELECT
     z."Zone" AS pickup_zone,
